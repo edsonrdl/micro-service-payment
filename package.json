@@ -1,7 +1,22 @@
 {
+  "name": "micro-service-payment",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "nodemon main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
     "amqplib": "^0.10.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
-    "mongodb": "^6.10.0"
+    "joi": "^17.13.3",
+    "mongodb": "^6.10.0",
+    "nodemon": "^3.1.7"
   }
 }
