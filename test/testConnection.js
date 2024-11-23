@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb");
 
 const url = "mongodb://localhost:27017"; 
-const dbName = "order-db";
+const dbName = "payment-db";
 
 (async () => {
   try {

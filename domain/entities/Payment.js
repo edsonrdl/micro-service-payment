@@ -1,4 +1,4 @@
-class Order {
+class Payment {
     constructor({ createdAt,orderId, productName, quantity , status }) {
         if (!createdAt ||!orderId || !productName || !quantity||!status) {
             throw new Error('Todos os campos do pedido são obrigatórios.');
@@ -12,4 +12,4 @@ class Order {
     }
 }
 
-module.exports = Order;
+module.exports = Payment;

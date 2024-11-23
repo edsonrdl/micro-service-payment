@@ -10,7 +10,7 @@ module.exports = {
         dbName: process.env.MONGODB_DATABASE,
     },
     server: {
-        port: process.env.PORT || 3000,
+        port: process.env.PORT || 4000,
         allowedOrigin: process.env.ALLOWED_ORIGIN || '*',
     },
     retryInterval: process.env.RETRY_INTERVAL_MS || 5000,
