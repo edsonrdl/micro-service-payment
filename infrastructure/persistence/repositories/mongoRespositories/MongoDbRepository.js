@@ -9,15 +9,15 @@ class MongoDbRepository {
 
     async connect() {
         try {
-            console.log('Conectando ao MongoDB...');
+            console.log('Conectando ao Banco de Pagamento...');
             console.log(this.mongoUrl);
             this.client = await MongoClient.connect(this.mongoUrl);
-            console.log('Conexão com MongoDB bem-sucedida.');
+            console.log('Conexão com Banco de Pagamento bem-sucedida.');
             console.log(this.dbName);
             console.log(this.client);
             return this.client.db(this.dbName);
         } catch (err) {
-            console.error('Erro ao conectar ao MongoDB:', err.message);
+            console.error('Erro ao conectar ao Banco de Pagamento:', err.message);
             throw err;
         }
     }
@@ -25,7 +25,7 @@ class MongoDbRepository {
     async closeConnection() {
         if (this.client) {
             await this.client.close();
-            console.log('Conexão com MongoDB fechada.');
+            console.log('Conexão com Banco de Pagamento fechada.');
         }
     }
 }
