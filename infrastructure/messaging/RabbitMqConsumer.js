@@ -4,9 +4,9 @@ const ProcessPaymentService = require('../../application/services/ProcessPayment
 const ReconnectScheduler = require('../scheduler/ReconnectScheduler');
 
 class RabbitMqConsumer {
-    constructor(config, Repository) {
+    constructor(config, paymentRepository) {
         this.rabbitMqService = new RabbitMqService(config);
-        this.Repository = paymentRepository; 
+        this.paymentRepository = paymentRepository; 
         this.scheduler = new ReconnectScheduler(10, 5000);
         this.isConsuming = false; 
     }
