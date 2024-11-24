@@ -5,10 +5,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('./config/config');
 const MongoDbRepository = require('./infrastructure/persistence/repositories/mongoRespositories/MongoDbRepository');
-const PaymentRepository = require('./infrastructure/persistence/repositories/PaymentRepository/PaymentRepository');
+const OrderRepository = require('./infrastructure/persistence/repositories/orderRepository/OrderRepository');
 const RabbitMqConsumer = require('./infrastructure/messaging/RabbitMqConsumer');
-const PaymentController = require('./microservice/controllers/PaymentController');
-const PaymentRoutes = require('./microservice/routes/PaymentRoutes.JS');
+const OrderController = require('./microservice/controllers/OrderController');
+const orderRoutes = require('./microservice/routes/PaymentRoutes.JS');
 
 (async function startSystem() {
     try {
@@ -23,15 +23,15 @@ const PaymentRoutes = require('./microservice/routes/PaymentRoutes.JS');
 
         const mongoDbRepository = new MongoDbRepository(config.mongoDb);
         const db = await mongoDbRepository.connect();
-        const PaymentRepository = new PaymentRepository(db);
+        const orderRepository = new OrderRepository(db);
 
    
-        const rabbitMqConsumer = new RabbitMqConsumer(config.rabbitMq, PaymentRepository);
+        const rabbitMqConsumer = new RabbitMqConsumer(config.rabbitMq, orderRepository);
         await rabbitMqConsumer.start();
 
      
-        const PaymentController = new PaymentController(PaymentRepository);
-        app.use('/api/Payments', PaymentRoutes(PaymentController));
+        const orderController = new OrderController(orderRepository);
+        app.use('/api/orders', orderRoutes(orderController));
 
         app.listen(config.server.port, () => {
             console.log(`Servidor rodando na porta ${config.server.port}`);
