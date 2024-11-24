@@ -1,14 +1,14 @@
 class Payment {
-    constructor({ createdAt,orderId, productName, quantity , status }) {
-        if (!createdAt ||!orderId || !productName || !quantity||!status) {
-            throw new Error('Todos os campos do pedido são obrigatórios.');
+    constructor({ paymentId,orderId, amount , status,paymentDate }) {
+        if (!paymentId ||!orderId || !amount || !status||!paymentDate) {
+            throw new Error('Todos os campos do pagamrnto são obrigatórios.');
         }
 
-        this.createdAt = createdAt;
+        this.paymentId = paymentId;
         this.orderId = orderId;
-        this.productName = productName;
-        this.quantity = quantity;
+        this.amount = amount;
         this.status = status;
+        this.paymentDate = paymentDate;
     }
 }
 
