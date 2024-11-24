@@ -6,7 +6,7 @@ const ReconnectScheduler = require('../scheduler/ReconnectScheduler');
 class RabbitMqConsumer {
     constructor(config, Repository) {
         this.rabbitMqService = new RabbitMqService(config);
-        this.Repository = orderRepository; 
+        this.Repository = paymentRepository; 
         this.scheduler = new ReconnectScheduler(10, 5000);
         this.isConsuming = false; 
     }
@@ -38,7 +38,7 @@ class RabbitMqConsumer {
             await this.rabbitMqService.consume(async (message) => {
                 console.log('Mensagem  recebida payment_queue:', message);
 
-                const processOrderUseService = new ProcessPaymentService(this.orderRepository);
+                const processOrderUseService = new ProcessPaymentService(this.paymentRepository);
                 try {
             
                     await processOrderUseService.execute(JSON.parse(message));

@@ -1,8 +1,8 @@
 const Joi = require('joi');
 
 class PaymentController {
-    constructor(ProcessPaymentService) {
-        this.ProcessPaymentService = ProcessPaymentService;
+    constructor(processPaymentService) {
+        this.processPaymentService = processPaymentService;
     }
 
     async createPayment(req, res) {
@@ -21,7 +21,7 @@ class PaymentController {
 
         try {
             const paymentData = req.body;
-            await this.ProcessPaymentService.execute(paymentData);
+            await this.processPaymentService.execute(paymentData);
             res.status(201).json({ message: 'Pagamento processado com sucesso.' });
         } catch (err) {
             res.status(500).json({ error: `Erro ao processado pagamento: ${err.message}` });

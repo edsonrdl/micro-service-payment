@@ -8,7 +8,7 @@ const MongoDbRepository = require('./infrastructure/persistence/repositories/mon
 const PaymentRepository = require('./infrastructure/persistence/repositories/paymentRepository/PaymentRepository');
 const RabbitMqConsumer = require('./infrastructure/messaging/RabbitMqConsumer');
 const PaymentController = require('./microservice/controllers/PaymentController');
-const PaymentRoutes = require('./microservice/routes/PaymentRoutes.JS');
+const paymentRoutes = require('./microservice/routes/PaymentRoutes.JS');
 
 (async function startSystem() {
     try {
@@ -31,7 +31,7 @@ const PaymentRoutes = require('./microservice/routes/PaymentRoutes.JS');
 
      
         const paymentController = new PaymentController(paymentRepository);
-        app.use('/api/orders', PaymentRoutes(paymentController));
+        app.use('/api/payments', paymentRoutes(paymentController));
 
         app.listen(config.server.port, () => {
             console.log(`Servidor rodando na porta ${config.server.port}`);
