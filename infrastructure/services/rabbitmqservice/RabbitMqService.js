@@ -14,7 +14,7 @@ class RabbitMqService {
 
     async connect() {
         try {
-            console.log('Tentando conectar ao RabbitMQ...');
+            console.log('Tentando conectar a fila de pagamento...');
             this.connection = await amqp.connect(this.config.url);
             this.channel = await this.connection.createChannel();
 
@@ -24,18 +24,18 @@ class RabbitMqService {
             await this.channel.bindQueue(this.config.queue, this.config.exchange, this.config.routingKey);
 
             this.isConnected = true;
-            console.log('RabbitMQ conectado e configurado.');
+            console.log('Fila conectada e configurado.');
 
     
             this.connection.on('close', async () => {
-                console.error('Conexão com RabbitMQ foi fechada. Tentando reconectar...');
+                console.error('Conexão com fila de pagamento foi fechada. Tentando reconectar...');
                 this.isConnected = false;
                 await this.handleReconnect();
             });
 
  
             this.connection.on('error', async (err) => {
-                console.error('Erro na conexão com RabbitMQ:', err.message);
+                console.error('Erro na conexão com fila de pagamento:', err.message);
                 this.isConnected = false;
                 await this.handleReconnect();
             });
@@ -45,7 +45,7 @@ class RabbitMqService {
                 await this.onReconnectCallback();
             }
         } catch (err) {
-            console.error('Erro ao conectar ao RabbitMQ:', err.message);
+            console.error('Erro ao conectar a fila de pagamento:', err.message);
             this.isConnected = false;
             throw err;
         }
@@ -54,10 +54,10 @@ class RabbitMqService {
   
     async consume(callback) {
         if (!this.channel) {
-            throw new Error('Canal RabbitMQ não configurado. Conecte-se primeiro.');
+            throw new Error('Canal fila de pagamento não configurado. Conecte-se primeiro.');
         }
 
-        console.log('Iniciando consumo de mensagens...');
+        console.log('Iniciando consumo de mensagens fila de pagamento...');
         await this.channel.consume(this.config.queue, async (msg) => {
             if (msg) {
                 try {
@@ -65,7 +65,7 @@ class RabbitMqService {
                     await callback(msg.content.toString());
                     this.channel.ack(msg); 
                 } catch (err) {
-                    console.error('Erro ao processar mensagem:', err.message);
+                    console.error('Erro ao processar mensagem de pagamento:', err.message);
                     this.channel.nack(msg, false, false); 
                 }
             }
