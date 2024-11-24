@@ -9,9 +9,9 @@ class PaymentRepository extends IPaymentRepository {
         this.collection = db.collection('paymentsCollection');
     }
 
-    async save(order) {
+    async save(payment) {
         try {
-            const result = await this.collection.insertOne(order);
+            const result = await this.collection.insertOne(payment);
             console.log(`Pedido salvo no Banco de pagamento com ID: ${result.insertedId}`);
         } catch (err) {
             console.error('Erro ao salvar pagamento no Banco:', err);
