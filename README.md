@@ -67,7 +67,7 @@ Após configurar a API principal e garantir que os containers do RabbitMQ e da A
      - **Banco:** `payment-db`
      - **Collection:** `paymentssCollection`
 
-     ![Estrutura do MongoDB](![alt text](image.png))
+     ![Estrutura do MongoDB](https://github.com/user-attachments/assets/f3286987-a556-45fe-b8b7-1232fce4beb6)
 
 4. Configure o RabbitMQ:
 
@@ -117,7 +117,8 @@ Após configurar a API principal e garantir que os containers do RabbitMQ e da A
 
   Dados persistidos no banco:
 
-  ![Dados no MongoDB](![alt text](image-2.png))
+  ![Dados no MongoDB](![alt text](![image](https://github.com/user-attachments/assets/88f49d9d-fdb9-4c8d-93e0-a2800eb174d7)
+))
 
 ---
 
@@ -131,7 +132,8 @@ Após configurar a API principal e garantir que os containers do RabbitMQ e da A
 
 - Utilize o Swagger para enviar requisições de teste e verificar o funcionamento do serviço.
 
-  ![Exemplo com Swagger](![alt text](image-1.png))
+  ![Exemplo com Swagger](![alt text](![image](https://github.com/user-attachments/assets/4d801066-1246-4e71-88c2-a14069f4631d)
+))
 
 
 
