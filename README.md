@@ -11,7 +11,6 @@ Breve descrição do projeto.
 - **MongoDB** - Versão 8.0.3
 
 ---
-
 ## Integração com a API Principal
 
 Antes de configurar o microserviço, é necessário configurar a API principal e os containers relacionados.
@@ -51,7 +50,7 @@ Após configurar a API principal e garantir que os containers do RabbitMQ e da A
 
    ```bash
    git clone https://github.com/edsonrdl/micro-service-payment.git
-   cd micro-service-payment
+   cd seu-repositorio-payment
    ```
 
 2. Instale as dependências:
@@ -66,9 +65,9 @@ Após configurar a API principal e garantir que os containers do RabbitMQ e da A
    - Crie os bancos e as collections necessários conforme a estrutura abaixo:
 
      - **Banco:** `payment-db`
-     - **Collection:** `paymentsCollection`
+     - **Collection:** `paymentssCollection`
 
-     ![Estrutura do MongoDB](https://github.com/user-attachments/assets/f3286987-a556-45fe-b8b7-1232fce4beb6)
+       ![Estrutura do MongoDB](https://github.com/user-attachments/assets/f3286987-a556-45fe-b8b7-1232fce4beb6)
 
 4. Configure o RabbitMQ:
 
@@ -109,16 +108,6 @@ Após configurar a API principal e garantir que os containers do RabbitMQ e da A
    - `Completed = 3`
    - `Cancelled = 4`
 
-2. A mensagem será consumida pelo microserviço, persistida no banco de dados e um pagamento simulado será enviado via API. Logs e mensagens serão exibidos no terminal para validação.
-
-   Exemplo de mensagens no terminal:
-
-   ![Mensagens no Terminal](https://github.com/user-attachments/assets/02e5991d-1d25-428e-a229-dca1cc841736)
-
-   Simulador de pagamento:
-
-   ![Simulador de Pagamento](https://github.com/user-attachments/assets/ab3f0c56-cdd2-456e-a445-4a2dc533a203)
-
 ---
 
 ## Estrutura do Banco de Dados
@@ -128,7 +117,7 @@ Após configurar a API principal e garantir que os containers do RabbitMQ e da A
 
   Dados persistidos no banco:
 
-  ![Dados no MongoDB](https://github.com/user-attachments/assets/63deec3a-b862-4753-91ab-adc327edda69)
+  ![Dados no MongoDB](![alt text](image-2.png))
 
 ---
 
@@ -142,9 +131,9 @@ Após configurar a API principal e garantir que os containers do RabbitMQ e da A
 
 - Utilize o Swagger para enviar requisições de teste e verificar o funcionamento do serviço.
 
-  ![Exemplo com Swagger](https://github.com/user-attachments/assets/0c14d902-67eb-4966-98ba-6a8bdf5abf94)
+  ![Exemplo com Swagger](![alt text](image-1.png))
 
----
+
 
 ## Instalação
 
@@ -152,7 +141,12 @@ Após configurar a API principal e garantir que os containers do RabbitMQ e da A
 
    ```bash
    git clone https://github.com/edsonrdl/micro-service-payment.git
-   cd micro-service-payment
-   ```
+   cd seu-repositorio-payment
 
-2. Siga os passos descritos acima para configurar e rodar o serviço.
+## Instalação da API com os Demais Microserviços e Especificações
+
+1. Repositório principal para a API e os demais microserviços:
+
+   ```bash
+   git clone https://github.com/edsonrdl/order-processing-system
+   cd seu-repositorio-payment
